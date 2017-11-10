@@ -1,0 +1,44 @@
+<div class="form-block" style="background-image: url(images/form-bg.jpg);">
+    <div class="mbox">
+        <div class="title-row black">
+            <h2>Не нашли то что нужно? </h2>
+            <p>Нужная модель может появиться уже завтра. Оставьте ваш E-mail - и мы сообщим, как только интересующая вас техника поступит в магазин.</p>
+        </div>
+        <form action="ajax.php" class="contein-form">
+            <div class="top-row">
+                <div class="inputer">
+                    <div class="labled">Введите ваше имя:</div>
+                    <input type="text" name="name" placeholder="Напр: Иванов Иван Иванович" required="required">
+                </div>
+                <div class="inputer">
+                    <div class="labled">Введите ваш e-mail:</div>
+                    <input type="email" name="email" placeholder="Напр: Sample@mail.com" required="required">
+                </div>
+                <div class="inputer">
+                    <div class="labled">Нужный тип техники:</div>
+                    <select name="choose">
+                        <option value="1" selected>Морозильные камеры</option>
+                        <option value="2">Морозильные камеры 1</option>
+                        <option value="3">Морозильные камеры 2</option>
+                        <option value="4">Морозильные камеры 3</option>
+                        <option value="5">Морозильные камеры 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="bottom-row">
+                <div class="side-checker">
+                    <label>
+                        <input type="checkbox" name="confidential" required="required">
+                        <span class="beutify"></span>
+                        <span class="texter">Заполняя формы, вы соглашаетесь с <a href="">политикой конфиденциальности</a>  и даёте согласите на обработку персональных данных.</span>
+                    </label>
+                </div>
+                <div class="submiter">
+                    <button type="submit">
+                        <span>Узнать о поступлении первым</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

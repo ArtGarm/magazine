@@ -141,8 +141,9 @@ function Maskedinput(){
 $(document).ready(function(){
 
     
-
-   validate('#call-popup .contact-form', {submitFunction:validationCall});
-   Maskedinput();
+    
+    validate('.form-block .contein-form', {submitFunction:validationCall});
+    validate('#call-popup .contact-form', {submitFunction:validationCall});
+    Maskedinput();
 
 });
