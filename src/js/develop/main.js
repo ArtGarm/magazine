@@ -147,6 +147,95 @@ $(document).ready(function(){
 
     /* main menu */
 
+    /* paginator fix for D */
+
+        if ( $('.paginator-wrap').length ){
+            
+            if( $('.paginator-wrap .prew').length ){
+                $('.paginator-wrap .prew').html('<svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  viewBox="0 0 444.531 444.531" style="enable-background:new 0 0 444.531 444.531;"  xml:space="preserve"> <g> <path d="M213.13,222.409L351.88,83.653c7.05-7.043,10.567-15.657,10.567-25.841c0-10.183-3.518-18.793-10.567-25.835   l-21.409-21.416C323.432,3.521,314.817,0,304.637,0s-18.791,3.521-25.841,10.561L92.649,196.425   c-7.044,7.043-10.566,15.656-10.566,25.841s3.521,18.791,10.566,25.837l186.146,185.864c7.05,7.043,15.66,10.564,25.841,10.564  s18.795-3.521,25.834-10.564l21.409-21.412c7.05-7.039,10.567-15.604,10.567-25.697c0-10.085-3.518-18.746-10.567-25.978   L213.13,222.409z"/></g> </svg>');
+            }
+
+            if( $('.paginator-wrap .next').length ){
+                $('.paginator-wrap .next').html('<svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 444.819 444.819" style="enable-background:new 0 0 444.819 444.819;" xml:space="preserve"> <g> <path d="M352.025,196.712L165.884,10.848C159.029,3.615,150.469,0,140.187,0c-10.282,0-18.842,3.619-25.697,10.848L92.792,32.264  c-7.044,7.043-10.566,15.604-10.566,25.692c0,9.897,3.521,18.56,10.566,25.981l138.753,138.473L92.786,361.168  c-7.042,7.043-10.564,15.604-10.564,25.693c0,9.896,3.521,18.562,10.564,25.98l21.7,21.413  c7.043,7.043,15.612,10.564,25.697,10.564c10.089,0,18.656-3.521,25.697-10.564l186.145-185.864 c7.046-7.423,10.571-16.084,10.571-25.981C362.597,212.321,359.071,203.755,352.025,196.712z"/> </g></svg>');
+            }
+        }
+
+    /* paginator fix for D */
+
+    /* filter */
+
+        if ( $('.filter-wrap').length ){
+            $('.filter-list .head-row').on('click', function(){
+                if ( $(this).hasClass('hide') ){
+                    $(this).closest('.row').find('.contet-row').slideDown(300);
+                    $(this).removeClass('hide')
+                } else {
+                    $(this).closest('.row').find('.contet-row').slideUp(300);
+                    $(this).addClass('hide')
+                }
+            });
+
+            $('.more .flip').on('click', function(){
+                $(this).closest('.has-more').find('.hide').slideDown(300);
+                $(this).closest('.more').slideUp(300);
+                $(this).closest('.has-more').find('.less').slideDown(300);
+            });
+
+            $('.less .flip').on('click', function(){
+                $(this).closest('.has-more').find('.hide').slideUp(300);
+                $(this).closest('.less').slideUp(300);
+                $(this).closest('.has-more').find('.more').slideDown(300);
+            });
+
+            /* slider */
+                var slider = document.getElementById('bottomer-slider');
+
+                var min = $('#bottomer-slider').attr('data-min-price')*1;
+                var max = $('#bottomer-slider').attr('data-max-price')*1;
+
+                var startMin = $('.filter-list input[name=price-from]').val() * 1;
+                var startMax = $('.filter-list input[name=price-to]').val() * 1 ;
+                
+                noUiSlider.create(slider, {
+                    start: [ startMin, startMax ],
+                    connect: true,
+                    step: 1,
+                    range: {
+                        'min': min,
+                        'max': max
+                    }
+                });
+
+                slider.noUiSlider.on('update', function( values, handle ){
+
+                    $('.filter-list input[name=price-from]').val( Math.round( values[0] ) ) ;
+                    $('.filter-list input[name=price-to]').val( Math.round( values[1] ) ) ;
+
+                });
+
+                $('.filter-list input[name=price-to]').on('change', function(){
+                    slider.noUiSlider.set([ $('.filter-list input[name=price-from]').val() , this.value  ]);
+                });
+
+                $('.filter-list input[name=price-from]').on('change', function(){
+                    slider.noUiSlider.set([this.value, $('.filter-list input[name=price-to]').val() ]);
+                });
+            /* slider */
+
+            $('.catalog-list-wrap .hidden-filter').on('click', function(){
+
+                if( $('.content-page .siders').hasClass('translated') ){
+                    $('.content-page .siders').removeClass('translated');
+                } else {
+                    $('.content-page .siders').addClass('translated');
+                }
+
+            });
+
+        }
+
+    /* filter */
+
 });
 
 $(window).on('load', function(){

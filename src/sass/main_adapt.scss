@@ -32,6 +32,11 @@
         .contact-wrap .map-part .hovered-content{left: 0;}
     /* contact */
 
+    /* catalog-list-wrap */
+
+        .catalog-list-wrap .content-list{ justify-content: space-around;}
+
+    /* catalog-list-wrap */
 }
 @media screen and (max-width: 1100px){
 
@@ -50,6 +55,8 @@
 @media screen and (max-width: 920px){
     #hidden-menu{display: block;}
     .covert-for-two{background-image: none !important; }
+
+    .logo-line.inside{display: none;}
 
     .title-row h2{font-size: 28px;}
     .title-row p{font-size: 14px; padding-bottom: 10px;}
@@ -121,11 +128,31 @@
 
     /* contact-wrap */
 
-
-
     /* footer */
         .footer .copir-line p, .footer .copir-line a{text-align: center;}
     /* footer */
+
+    /* catalog-list-wrap */
+               
+        .catalog-list-wrap .hidden-filter{display: flex; align-items: center; justify-content: center; width: 46px; height: 46px;  cursor: pointer; border: 2px solid #494c4e;
+            svg{  width: 22px; height: 22px;}
+        }
+        .catalog-list-wrap .display-type{ width: 120px; 
+            a{width: 46px; height: 46px;display: flex; align-items: center; justify-content: center; border: 2px solid #b3bac6; transition: all 0.3s;
+                &.active{border: 2px solid #494c4e;}
+                svg{  width: 22px; height: 22px;}
+                &:hover{border-color: #494c4e; }
+            }
+        }
+
+        .catalog-list-wrap .veiw-first, .catalog-list-wrap .display-count{display: none;}
+        .content-page { overflow: hidden;
+            .siders{ transform: translateX(-290px); width: calc(100% + 290px); transition: all 0.3s;
+                &.translated{ transform: translateX(0px);  }
+            }
+        }
+
+    /* catalog-list-wrap */
 
 }
 @media screen and (max-width: 767px){
@@ -135,6 +162,11 @@
         .first-wrap .items{ display: block;}
 
     /* first */
+
+    .breadcrumbs{display: none;}
+    .title-wrap{padding-top: 20px; text-align: center;
+        h1 { font-size: 24px; }
+    }
 
 }
 @media screen and (max-width: 600px){
@@ -190,6 +222,12 @@
 
 }
 @media screen and (max-width: 479px){
+
+    /* filter-wrap */
+        .filter-wrap{width: 230px;}
+        .content-page .siders{    width: calc(100% + 240px); transform: translateX(-240px);}
+        .catalog-list-wrap{width: calc(100% - 240px);     }
+    /* filter-wrap */
 
 }
 @media screen and (max-width: 320px){
