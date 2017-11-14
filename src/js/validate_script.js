@@ -131,6 +131,50 @@ function popNext(popupId){
 
 }
 
+function cartValidation(form){
+    var thisForm = $(form);
+    var formSur = thisForm.serializeArray();
+
+
+    $('.table-items tbody tr').each(function(){
+        formSur.push({
+            name : $(this).find('input[name=tovar-id]').val(),
+            value: $(this).find('input[name=count]').val()
+        });
+    });
+
+    /* success - delete after use */
+
+        $('.buttons-row').slideUp(300);
+        
+        $('.list-steps .item').removeClass('active');
+        $('.list-steps .item').eq(2).addClass('active');
+
+        $('.step2').slideUp(300);
+        $('.step3').slideDown(300);
+
+    /* success */
+
+
+
+    $.ajax({
+        url : thisForm.attr('action'),
+        data: formSur,
+        method:'POST',
+        success : function(data){
+            
+            $('.buttons-row').slideUp(300);
+            
+            $('.list-steps .item').removeClass('active');
+            $('.list-steps .item').eq(2).addClass('active');
+    
+            $('.step2').slideUp(300);
+            $('.step3').slideDown(300);
+        }
+    });
+
+}
+
 /*маска на инпуте*/
 function Maskedinput(){
     if($('.tel-mask')){
@@ -140,7 +184,7 @@ function Maskedinput(){
 
 $(document).ready(function(){
 
-    
+    validate('.step2 form', {submitFunction: cartValidation });
     
     validate('.form-block .contein-form', {submitFunction:validationCall});
     validate('#call-popup .contact-form', {submitFunction:validationCall});
